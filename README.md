@@ -46,7 +46,7 @@ You can either **download the program** directly from the **[Releases page](http
 3. Compile and run the program.
 
 ### Prerequisites
-- C++ compiler with C++17 support
+- C++ compiler with C++17 support [Download G++](https://visualstudio.microsoft.com/vs/features/cplusplus/)
 - Windows operating system (for console icon feature)
 - **Pastebin API key** (optional for Pastebin upload)
 
