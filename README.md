@@ -54,3 +54,4 @@ You can either **download the program** directly from the **[Releases page](http
 git clone https://github.com/UnStackss/eFire.git
 cd eFire
 # Compile the program with your C++ compiler
+g++ -o eFire eFire.cpp -lwininet
