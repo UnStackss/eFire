@@ -8,6 +8,8 @@
 [![Forks](https://img.shields.io/github/forks/UnStackss/eFire)](https://github.com/UnStackss/eFire/forks)
 [![Stars](https://img.shields.io/github/stars/UnStackss/eFire)](https://github.com/UnStackss/eFire/stargazers)
 
+## 🚀 [Download eFire Now](https://github.com/UnStackss/eFire/releases)
+> Direct download link for the latest release of eFire.
 
 ![eFire Screenshot](https://i.imgur.com/kJB3C1l.png)
 
