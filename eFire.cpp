@@ -9,25 +9,21 @@
 #include <algorithm>
 #include <ctime>
 #include <limits>
-#include <wininet.h> // Include per WinINet
+#include <wininet.h>
 
 namespace fs = std::filesystem;
 
-// Pastebin API configuration (only used if the user provides an API key)
-std::string PASTEBIN_API_KEY = ""; // Empty by default, will be set by user input
+std::string PASTEBIN_API_KEY = "";
 const std::string PASTEBIN_API_URL = "https://pastebin.com/api/api_post.php";
 
-// Set console color
 void setColor(int color) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-// Enable UTF-8 output
 void enableUTF8Output() {
     SetConsoleOutputCP(CP_UTF8);
 }
 
-// Set console window icon (Windows only)
 void setConsoleIcon(const std::string& iconFilePath) {
     HWND consoleWindow = GetConsoleWindow();
     HICON hIcon = (HICON)LoadImage(NULL, iconFilePath.c_str(), IMAGE_ICON, 0, 0, LR_LOADFROMFILE);
@@ -35,10 +31,9 @@ void setConsoleIcon(const std::string& iconFilePath) {
     SendMessage(consoleWindow, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
 }
 
-// Animated loading bar
 void displayLoadingBar() {
     const int width = 50;
-    const int crimsonColor = 12;  // Fiery red
+    const int crimsonColor = 12;
     setColor(crimsonColor);
 
     std::cout << "\n🔥 Progress: ";
@@ -62,7 +57,6 @@ void displayLoadingBar() {
     std::cout << "\n";
 }
 
-// Display fiery animated banner
 void showAnimatedBanner() {
     std::string banner[] = {
         "🔥🔥🔥   _____       _____ _         🔥🔥🔥",
@@ -74,7 +68,6 @@ void showAnimatedBanner() {
     };
     setColor(12);
 
-    // Display banner with animation
     for (const auto& line : banner) {
         std::cout << line << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
@@ -83,7 +76,6 @@ void showAnimatedBanner() {
     setColor(15);
 }
 
-// Get current date and time as a string
 std::string getCurrentDateTime() {
     auto now = std::time(nullptr);
     auto tm = *std::localtime(&now);
@@ -92,7 +84,6 @@ std::string getCurrentDateTime() {
     return oss.str();
 }
 
-// Export directory tree in YAML format with icons
 void writeDirectoryTreeToYAML(const fs::path& path, std::ofstream& outputFile, int depth) {
     try {
         for (const auto& entry : fs::directory_iterator(path)) {
@@ -110,7 +101,6 @@ void writeDirectoryTreeToYAML(const fs::path& path, std::ofstream& outputFile, i
     }
 }
 
-// Upload file content to Pastebin
 std::string uploadToPastebin(const std::string& content) {
     if (PASTEBIN_API_KEY.empty()) {
         return "No Pastebin API key provided, skipping upload.";
@@ -120,25 +110,21 @@ std::string uploadToPastebin(const std::string& content) {
     DWORD bytesWritten;
     std::string response;
 
-    // Initialize WinINet
-    hInternet = InternetOpen("DirectoryScanner", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0); // Usato "DirectoryScanner" come stringa char*
+    hInternet = InternetOpen("DirectoryScanner", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
     if (hInternet == NULL) {
         return "Error initializing WinINet.";
     }
 
-    // Connect to Pastebin API
     hConnect = InternetOpenUrlA(hInternet, PASTEBIN_API_URL.c_str(), NULL, 0, INTERNET_FLAG_RELOAD, 0);
     if (hConnect == NULL) {
         InternetCloseHandle(hInternet);
         return "Error connecting to Pastebin.";
     }
 
-    // Prepare data to send
     std::string postData = "api_dev_key=" + PASTEBIN_API_KEY + 
                            "&api_option=paste" +
                            "&api_paste_code=" + content;
     
-    // Send POST request
     const char* headers = "Content-Type: application/x-www-form-urlencoded\r\n";
     BOOL result = HttpSendRequestA(hConnect, headers, -1, (LPVOID)postData.c_str(), postData.length());
     
@@ -148,7 +134,6 @@ std::string uploadToPastebin(const std::string& content) {
         return "Error sending request.";
     }
 
-    // Read response from Pastebin
     char buffer[512];
     DWORD bytesRead;
     while (InternetReadFile(hConnect, buffer, sizeof(buffer), &bytesRead) && bytesRead > 0) {
@@ -161,12 +146,10 @@ std::string uploadToPastebin(const std::string& content) {
     return response;
 }
 
-// Main function
 int main() {
     enableUTF8Output();
     setColor(12);
 
-    // Prompt for Pastebin API key
     std::cout << "Enter your Pastebin API key (or press Enter to skip): ";
     std::getline(std::cin, PASTEBIN_API_KEY);
 
@@ -212,7 +195,6 @@ int main() {
             writeDirectoryTreeToYAML(path, outputFile, 1);
             outputFile.close();
 
-            // Upload to Pastebin
             std::ifstream fileStream(outputFileName);
             std::string fileContent((std::istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
             fileStream.close();
