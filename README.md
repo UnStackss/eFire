@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.imgur.com/41sRdEy.png" alt="eFire Logo" width="150">
+    <img src="https://i.imgur.com/ZMfR8Eu.png" alt="eFire Logo" width="150">
 </p>
 
 # 🔥 eFire - Directory Scanner in Inferno Mode 🔥
