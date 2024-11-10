@@ -4,9 +4,10 @@
 
 # 🔥 eFire - Directory Scanner in Inferno Mode 🔥
 
-[![Downloads](https://img.shields.io/github/downloads/UnStackss/eFire/total)](https://github.com/UnStackss/eFire/releases)
-[![Forks](https://img.shields.io/github/forks/UnStackss/eFire)](https://github.com/UnStackss/eFire/forks)
-[![Stars](https://img.shields.io/github/stars/UnStackss/eFire)](https://github.com/UnStackss/eFire/stargazers)
+[![Downloads](https://img.shields.io/github/downloads/UnStackss/eFire/total?style=for-the-badge)](https://github.com/UnStackss/eFire/releases)
+[![Forks](https://img.shields.io/github/forks/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/forks)
+[![Stars](https://img.shields.io/github/stars/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/stargazers)
+[![Issues](https://img.shields.io/github/issues/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/issues)
 
 ## 🚀 [Download eFire Now](https://github.com/UnStackss/eFire/releases/download/latest/eFire.exe)
 > Direct download link for the latest release of eFire.
