@@ -8,6 +8,7 @@
 [![Forks](https://img.shields.io/github/forks/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/forks)
 [![Stars](https://img.shields.io/github/stars/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/stargazers)
 [![Issues](https://img.shields.io/github/issues/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/issues)
+[![PullRequests](https://img.shields.io/github/issues-pr/UnStackss/eFire?style=for-the-badge)](https://github.com/UnStackss/eFire/pulls)
 
 ## 🚀 [Download eFire Now](https://github.com/UnStackss/eFire/releases/download/latest/eFire.exe)
 > Direct download link for the latest release of eFire.
